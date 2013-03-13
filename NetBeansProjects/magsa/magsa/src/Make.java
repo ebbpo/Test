@@ -21,7 +21,7 @@ public class Make {
         LineParser parser = new LineParser();
         model = parser.parseDir(dir);
         
-           ConstraintBuilder builder = new PersonalistikaObmedzenia();
+        ConstraintBuilder builder = new PersonalistikaObmedzenia();
         builder.compose(model);
         
 
