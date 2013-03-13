@@ -36,7 +36,7 @@ public class DatabaseScriptGenerator extends Generator {
     public void generateProperty(PrintWriter out, Property property) {
         switch (property.getType()) {
             case STRING:
-                out.printf(",\n\t%s varchar(10)", property.getName());
+                out.printf(",\n\t%s varchar2", property.getName());
                 break;
             case INTEGER:
                 out.printf(",\n\t%s int", property.getName());
