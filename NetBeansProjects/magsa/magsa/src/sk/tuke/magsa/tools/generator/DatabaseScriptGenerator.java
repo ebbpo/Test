@@ -6,9 +6,8 @@ import java.util.List;
 import sk.tuke.magsa.tools.metamodel.Entity;
 import sk.tuke.magsa.tools.metamodel.Model;
 import sk.tuke.magsa.tools.metamodel.Property;
-import sk.tuke.magsa.tools.metamodel.constraints.Constraint;
-import sk.tuke.magsa.tools.metamodel.constraints.Required;
 import tuke.magsa.tools.metamodel.constraints.Length;
+import tuke.magsa.tools.metamodel.constraints.Required;
 
 //SEE ALSO: Transformer Generation
 //http://martinfowler.com/dslwip/TransformerGeneration.html
@@ -56,11 +55,12 @@ public class DatabaseScriptGenerator extends Generator {
     }
     
     public  void generateConstraints(PrintWriter out, Property property){
+        if(property.getConstraints() != null){
        if(property.hasConstraint(Length.class)){
            out.printf("(%s)",property.getConstraint(Length.class).getMaxLength());
        }
        if(property.hasConstraint(Required.class)){
           out.printf(" NOT NULL");
        }
-    }
+    }}
 }

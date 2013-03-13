@@ -8,10 +8,10 @@ import sk.tuke.magsa.tools.metamodel.Property;
 import sk.tuke.magsa.tools.metamodel.constraints.Constraint;
 import sk.tuke.magsa.tools.metamodel.constraints.EntityRef;
 import sk.tuke.magsa.tools.metamodel.constraints.PropertyRef;
-import sk.tuke.magsa.tools.metamodel.constraints.Required;
 import tuke.magsa.tools.metamodel.constraints.Length;
 import tuke.magsa.tools.metamodel.constraints.Range;
 import tuke.magsa.tools.metamodel.constraints.Regex;
+import tuke.magsa.tools.metamodel.constraints.Required;
 
 //SEE ALSO: Nested Function
 //http://martinfowler.com/dslwip/NestedFunction.html
@@ -76,6 +76,7 @@ public abstract class ConstraintBuilder {
                         throw new ConstraintProcessingException(constraint.toString());
                     }
                     property.setConstraints(propertyRef.getConstraints());
+                                       
                 }
         }
 	}

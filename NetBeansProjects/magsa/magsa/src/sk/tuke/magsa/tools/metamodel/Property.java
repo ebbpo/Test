@@ -43,6 +43,7 @@ public class Property implements Named {
 //Range range = property.getConstraint(Range.class);
     public <T extends Constraint> T getConstraint(Class<T> clazz) {
         for (Constraint constraint : getConstraints()) {
+            System.out.println(getConstraints().length);
             if (clazz.isAssignableFrom(constraint.getClass())) {
                 return (T) constraint;
             }

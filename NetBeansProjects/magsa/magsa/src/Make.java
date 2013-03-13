@@ -14,16 +14,16 @@ public class Make {
     public static void main(String[] args) throws Exception {
         /* Model - object representation of input sentences */
         Model model;
-        
-      
+
+
         /* External language - single line parser parses the content of model directory in the project */
         File dir = new File("model");
         LineParser parser = new LineParser();
         model = parser.parseDir(dir);
-        
+
         ConstraintBuilder builder = new PersonalistikaObmedzenia();
         builder.compose(model);
-        
+
 
         /* External language - single line parser */
         new DatabaseScriptGenerator(model).generate();
@@ -35,6 +35,6 @@ public class Make {
         /* Print the model */
         System.out.println(model);
 
-        
+
     }
 }
