@@ -1,0 +1,7 @@
+    if (object.get$generator.toUCIdent($property.name)() != null){
+        Pattern constraintPattern = Pattern.compile("$constraint.getRegex()");
+        Matcher constraintMatcher = constraintPattern.matcher(object.get$generator.toUCIdent($property.name)());
+        if (!constraintMatcher.find()){
+        throw new ValidatorException("Property '$property.name' does not match the pattern!");
+           }
+}
