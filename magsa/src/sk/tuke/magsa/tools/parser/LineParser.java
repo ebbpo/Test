@@ -60,9 +60,9 @@ public class LineParser {
             }
         } catch (IOException ex) {
 //            Logger.getLogger(LineParser.class.getName()).log(Level.SEVERE, null, ex);
-             System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
-        
+
         return new Entity(name, propertyList.toArray(new Property[propertyList.size()]));
     }
 
@@ -76,7 +76,6 @@ public class LineParser {
 
         Matcher commentMatcher = commentPattern.matcher(line);
         Matcher propertyMatcher = propertyPattern.matcher(line);
-
         if (propertyMatcher.find()) {
             String name = propertyMatcher.group(1);
             String typeName = propertyMatcher.group(3);

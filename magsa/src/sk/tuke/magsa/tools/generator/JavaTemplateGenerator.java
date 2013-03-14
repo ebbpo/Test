@@ -75,6 +75,8 @@ public abstract class JavaTemplateGenerator extends TemplateGenerator {
                 return "String";
             case CHAR:
                 return "Character";
+            case ARRAY:
+                return "String[]";
         }
         throw new IllegalArgumentException("Data type " + type + " is not supported");
     }
@@ -89,6 +91,8 @@ public abstract class JavaTemplateGenerator extends TemplateGenerator {
                 return "setString";
             case CHAR:
                 return "setCharacter";
+            case ARRAY:
+                return "setArray";
         }
         throw new IllegalArgumentException("Data type " + type + " is not supported");
     }
@@ -103,6 +107,8 @@ public abstract class JavaTemplateGenerator extends TemplateGenerator {
                 return "getString";
             case CHAR:
                 return "getCharacter";
+            case ARRAY:
+                return "getArray";
 
         }
         throw new IllegalArgumentException("Data type " + type + " is not supported");

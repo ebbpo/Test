@@ -6,17 +6,21 @@ public class Property implements Named {
 
     private final String name;
     private final Type type;
+    private String entityFK;
     private Constraint[] constraints;
+
+
 
     public Property(String name, Type type) {
         this.name = name;
         this.type = type;
     }
 
-    public Property(String name, Type type, Constraint[] constraints) {
+    public Property(String name, Type type, String entityFK) {
         this.name = name;
         this.type = type;
-        this.constraints = constraints;
+        this.entityFK = entityFK;
+        
     }
 
     @Override
@@ -34,6 +38,10 @@ public class Property implements Named {
      */
     public Type getType() {
         return type;
+    }
+    
+        public String getEntityFK() {
+        return entityFK;
     }
 
 //Do triedy Property pridajte metódu na získanie obmedzenia vlastnosti podľa typu public <T extends Constraint> T getConstraint(Class<T> clazz).

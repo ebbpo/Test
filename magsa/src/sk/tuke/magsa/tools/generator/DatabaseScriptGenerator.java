@@ -13,7 +13,6 @@ import tuke.magsa.tools.metamodel.constraints.Required;
 //http://martinfowler.com/dslwip/TransformerGeneration.html
 public class DatabaseScriptGenerator extends Generator {
 
-
     public DatabaseScriptGenerator(Model model) {
         super(model);
     }
@@ -25,14 +24,14 @@ public class DatabaseScriptGenerator extends Generator {
         for (Entity entity : getModel().getEntities()) {
 //            System.out.println(entity.getName());
             out.printf("CREATE TABLE %s (\n", entity.getName());
-            out.printf("\tident INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY");
+            out.printf("\tident_%s INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY", entity.getName());
             List<Property> properties = Arrays.asList(entity.getProperties());
             for (Property property : properties) {
                 generateProperty(out, property);
                 generateConstraints(out, property);
             }
             out.printf(");\n");
-            }
+        }
         out.close();
     }
 
@@ -45,22 +44,27 @@ public class DatabaseScriptGenerator extends Generator {
                 out.printf(",\n\t%s int", property.getName());
                 break;
             case REAL:
-                out.printf(",\n\t%s double", property.getName());
+                out.printf(",\n\t%s real", property.getName());
                 break;
             case CHAR:
                 out.printf(",\n\t%s char", property.getName());
                 break;
+            case ARRAY:
+                out.printf(",\n\t%s blob", property.getName());
+                break;
         }
 
     }
-    
-    public  void generateConstraints(PrintWriter out, Property property){
-        if(property.getConstraints() != null){
-       if(property.hasConstraint(Length.class)){
-           out.printf("(%s)",property.getConstraint(Length.class).getMaxLength());
-       }
-       if(property.hasConstraint(Required.class)){
-          out.printf(" NOT NULL");
-       }
-    }}
+
+    public void generateConstraints(PrintWriter out, Property property) {
+        if (property.getConstraints() != null) {
+            if (property.hasConstraint(Length.class)) {
+                out.printf("(%s)", property.getConstraint(Length.class).getMaxLength());
+            }
+            if (property.hasConstraint(Required.class)) {
+                out.printf(" NOT NULL");
+            }
+
+        }
+    }
 }

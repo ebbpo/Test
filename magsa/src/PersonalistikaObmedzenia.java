@@ -19,5 +19,6 @@ public class PersonalistikaObmedzenia extends ConstraintBuilder {
                 max_length(16),
                 regex("[A-Z]([a-z]*)")),
                 property_ref("vek", range(18, 40)));
+                
     }
 }
