@@ -1,5 +1,0 @@
-    if (object.get$generator.toUCIdent($property.name)() != null){
-        if(object.get$generator.toUCIdent($property.name)() > $constraint.getMaxValue() || object.get$generator.toUCIdent($property.name)() < $constraint.getMinValue()){
-            throw new ValidatorException("Property '$property.name' has length out of range!");
-}   
-    }

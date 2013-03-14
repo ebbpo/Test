@@ -1,4 +1,0 @@
-    if (object.get$generator.toUCIdent($property.name)() == null){
-             throw new ValidatorException("Property '$property.name' is required!");
-}   
-  
