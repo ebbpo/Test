@@ -1,0 +1,26 @@
+#set( $entity = $item )
+package $package;
+
+import sk.tuke.magsa.framework.Entity;
+
+public class $name extends Entity {
+    private static final long serialVersionUID = 1L;
+#foreach( $property in $entity.properties )
+#set( $pname = $property.name )
+#set( $ptype = $generator.getJavaType($property.type) )
+    private $ptype $pname;
+
+
+    public $ptype get$generator.toUCIdent($pname)() {
+        return $pname;
+    }
+
+    public void set$generator.toUCIdent($property.name)($ptype $pname) {
+        this.$pname = $pname;
+    }
+ #end
+   @Override
+   public String toString(){
+        return "$pname" +"("+#foreach($property in $entity.properties)" $property.name: " +$property.name+#end")";
+    }
+}
